@@ -12,13 +12,12 @@ public class Main {
         Map<Character, Integer> lit = new TreeMap<>();
         char[] letters = s.toCharArray();
         for (int i = 0; i < letters.length; i++) {
-            if (!lit.containsKey(letters[i]) && letters[i] != ' ') {
+            if (letters[i] != ' ') {
                 char k = letters[i];
                 int v = 1;
-                for (int j = i + 1; j < letters.length; j++) {
-                    if (letters[i] == letters[j]) {
-                        v++;
-                    }
+                if (lit.containsKey(k)) {
+                    lit.put(k, lit.get(k) + 1);
+                } else {
                     lit.put(k, v);
                 }
             }
